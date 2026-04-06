@@ -1,0 +1,455 @@
+/* styles.css - Professional Neumorphism (Soft UI) */
+
+/* --- 1. NEUMORPHIC VARIABLES --- */
+:root {
+    /* Neumorphism requires the background color and the element 
+      color to be identical. We use a professional, cool-toned light gray.
+    */
+    --bg-base: #e0e5ec;
+    
+    /* Typography - High contrast for professional accessibility */
+    --font-primary: 'Outfit', sans-serif;
+    --text-main: #2d3748;
+    --text-muted: #718096;
+    --accent: #3182ce;
+    
+    /* Neumorphic Shadow Palette */
+    /* Light source from top-left (white/bright), shadow to bottom-right (dark gray) */
+    --shadow-light: 8px 8px 16px #a3b1c6, -8px -8px 16px #ffffff;
+    --shadow-light-sm: 4px 4px 8px #a3b1c6, -4px -4px 8px #ffffff;
+    
+    /* Inset shadows for "pressed" or carved-out looks */
+    --shadow-inset: inset 6px 6px 12px #a3b1c6, inset -6px -6px 12px #ffffff;
+    --shadow-inset-sm: inset 3px 3px 6px #a3b1c6, inset -3px -3px 6px #ffffff;
+    
+    /* Layout */
+    --max-w: 1100px;
+    --radius-lg: 24px;
+    --radius-md: 16px;
+    --radius-sm: 8px;
+    --transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* --- 2. RESETS & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+/* --- 3. NEUMORPHIC UTILITY CLASSES --- */
+
+/* Standard protruding panel */
+.neu-panel {
+    background-color: var(--bg-base);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-light);
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Faint highlight edge */
+}
+
+/* Protruding element (like buttons or avatars) */
+.neu-extruded {
+    background-color: var(--bg-base);
+    box-shadow: var(--shadow-light-sm);
+}
+
+/* Carved out / pressed element (like inputs, tags, or active buttons) */
+.neu-pressed {
+    background-color: var(--bg-base);
+    box-shadow: var(--shadow-inset-sm);
+    border: 1px solid transparent;
+}
+
+/* Interactive Pills */
+.neu-pill {
+    background-color: var(--bg-base);
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    box-shadow: var(--shadow-light-sm);
+    transition: var(--transition);
+    cursor: default;
+}
+
+.neu-pill:hover {
+    color: var(--accent);
+    box-shadow: var(--shadow-inset-sm); /* Presses in on hover */
+}
+
+/* Interactive Buttons */
+.btn-neu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-base);
+    color: var(--accent);
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+}
+
+.btn-neu:hover {
+    color: var(--accent);
+}
+
+.btn-neu:active {
+    box-shadow: var(--shadow-inset);
+    transform: scale(0.98);
+}
+
+/* Interactive Cards */
+.neu-card {
+    background-color: var(--bg-base);
+    padding: 30px;
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+}
+
+.neu-card.interactive:hover {
+    box-shadow: var(--shadow-inset); /* Card presses in when hovered */
+}
+
+/* --- 4. LAYOUT ARCHITECTURE --- */
+.resume-container {
+    max-width: var(--max-w);
+    margin: 60px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* --- 5. SIDEBAR --- */
+.sidebar {
+    padding: 40px 30px;
+    position: sticky;
+    top: 40px;
+}
+
+.avatar-ring {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    padding: 6px; /* Space for the neumorphic extrusion */
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow-inset-sm); /* Image looks recessed into the ring */
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+.title {
+    font-size: 1rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.section-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.contact-list {
+    list-style: none;
+    margin-bottom: 40px;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.contact-list a:hover {
+    color: var(--accent);
+}
+
+.icon-wrapper {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent);
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+}
+
+.pill-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+/* --- 6. MAIN CONTENT --- */
+.content-area {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.content-block {
+    padding: 45px;
+}
+
+.block-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: var(--text-main);
+}
+
+.text-body {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 20px;
+}
+
+/* The vertical connecting line is a "carved out" trench */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 0;
+    left: 26px;
+    width: 4px;
+    border-radius: 4px;
+    background-color: var(--bg-base);
+    box-shadow: var(--shadow-inset-sm);
+}
+
+.timeline-node {
+    position: relative;
+    padding-left: 50px;
+    margin-bottom: 40px;
+}
+
+.timeline-node:last-child {
+    margin-bottom: 0;
+}
+
+.node-marker {
+    position: absolute;
+    left: 19px;
+    top: 6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid var(--bg-base);
+}
+
+.node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.role-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.company {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.date-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.task-list {
+    list-style: none;
+}
+
+.task-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.task-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* Cards Grid */
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+.card-desc {
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.card-meta {
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 500;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0,0,0,0.05); /* Very subtle separator */
+}
+
+/* --- 7. ANIMATIONS --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
+}
+
+.fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 { transition-delay: 100ms; }
+.delay-2 { transition-delay: 200ms; }
+.delay-3 { transition-delay: 300ms; }
+
+/* --- 8. RESPONSIVE DESIGN --- */
+@media (max-width: 968px) {
+    .resume-container {
+        grid-template-columns: 1fr;
+        margin: 30px auto;
+    }
+    
+    .sidebar {
+        position: relative;
+        top: 0;
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .content-block { padding: 30px 20px; }
+    .node-header { flex-direction: column; }
+    .timeline::before { left: 20px; }
+    .node-marker { left: 13px; }
+    .timeline-node { padding-left: 40px; }
+}
+
+/* --- 9. PRINT OPTIMIZATION --- */
+@media print {
+    body { background: #fff; color: #000; }
+    .sidebar-action { display: none !important; }
+    
+    .neu-panel, .neu-card, .neu-extruded, .neu-pressed, .neu-pill {
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    
+    .resume-container {
+        display: block;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    .sidebar {
+        border-bottom: 1px solid #ccc;
+        padding: 0 0 20px 0;
+        margin-bottom: 30px;
+    }
+    
+    .avatar-ring { display: none; }
+    .content-block { padding: 0; margin-bottom: 30px; break-inside: avoid; }
+    .text-muted { color: #444; }
+    .date-badge { padding: 0; }
+    
+    .timeline::before { background-color: #ccc; box-shadow: none; width: 2px;}
+    .node-marker { border: 2px solid #000; }
+}
