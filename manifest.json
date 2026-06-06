@@ -1,0 +1,19 @@
+{
+  "name": "Vicky Resume",
+  "short_name": "Vicky",
+  "icons": [
+    {
+      "src": "logo.png.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
