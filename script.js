@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-const text = "Sathiyaraj.S";
+const text = "Sathiyaraj!";
 let i = 0;
 
 function typeWriter() {
@@ -43,3 +43,4 @@ function typeWriter() {
 }
 
 typeWriter();
+document.getElementById("year").textContent = new Date().getFullYear();
