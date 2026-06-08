@@ -31,3 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+const text = "Sathiyaraj.S";
+let i = 0;
+
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("name").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 150);
+  }
+}
+
+typeWriter();
